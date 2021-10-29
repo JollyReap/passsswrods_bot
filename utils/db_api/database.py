@@ -1,9 +1,7 @@
-from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
-
-import models
+from sqlalchemy import create_engine, select
 from models import Users, Password
-
+import models
 
 class Database:
     def __init__(self, db_url):
@@ -32,13 +30,16 @@ class Database:
             session.close()
 
     def select_usr(self, data):
-        session = self.maker()
         select_user = select(Users).where(Users.tg_id == data)
+        print(select_user)
 
-
+#TEST
 if __name__ == '__main__':
     db = Database('sqlite:///database.db')
-    get_info = {'tg_id': 1242121}
+    info = {'tg_id': 12345678}
+    # db.add_user(data={'tg_id': '1244212234152314534615232451624567426355462'}, model=Users, filter_field="tg_id")
+    # sel = db.select_usr(45311)
 
-    db.add_user(data=get_info, model=Users, filter_field="tg_id")
-    # db.select_usr(get_info)
+    # db.add_user(data=info, model=Users, filter_field="tg_id")
+    # if not db.select_usr(info.values()):
+    #     db.add_user(info, Users, filter_field="tg_id")
