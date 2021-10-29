@@ -12,19 +12,19 @@ Base = declarative_base()
 
 
 class Users(Base):
-    __tablename__ = "users"
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False, unique=True)
-    tg_id = Column(Integer, nullable=False, unique=True)
-    password_id = Column(Integer, ForeignKey('password.id'), nullable=True, unique=True)
-    ship = relationship("user", backref="users")
+    __tablename__ = "Users"
+    tg_id = Column(Integer, primary_key=True, autoincrement=True, nullable=False, unique=True)
+    # tg_id = Column(Integer, nullable=False, unique=True)
+    password_id = Column(Integer, ForeignKey('Password.id'), nullable=True, unique=True)
+    ship = relationship("Password", backref="Users")#primaryjoin='and_(Users.tg_id==Password.tg_user_id)')
 
 
 class Password(Base):
-    __tablename__ = "password"
+    __tablename__ = "Password"
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False, unique=True)
-    user_id = Column(Integer, ForeignKey("users.id"))
+    tg_user_id = Column(Integer, ForeignKey("Users.tg_id"))
     service = Column(String(20), nullable=False, unique=False)
     email = Column(String(50), nullable=False, unique=False)
     password = Column(VARCHAR(100), nullable=False, unique=False)
-    relation = relationship('passwords', backref="password")
+    relation = relationship('Users', backref="Password", secondary='Users')
 
