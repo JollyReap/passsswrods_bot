@@ -5,7 +5,7 @@ Try this bot here: <a href="https://t.me/passswords_bot"> @passswords_bot</a>
 
 <h1>About</h1> 
 <ul>
- <li>Wrote on aiogram<3.0</li>
+ <li>Wrote on aiogram~=3.0.0a17</li>
  <li>Has a orm database</li>
  <li>And there will be more in the future</li>
 </ul>
