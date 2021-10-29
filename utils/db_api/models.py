@@ -6,8 +6,7 @@ from sqlalchemy import (
     VARCHAR
 )
 from sqlalchemy.ext.declarative import declarative_base  # класс, от которого будем наследовать все таблицы БД
-from sqlalchemy.orm import relationship, sessionmaker
-from sqlalchemy import create_engine
+from sqlalchemy.orm import relationship
 Base = declarative_base()
 
 
