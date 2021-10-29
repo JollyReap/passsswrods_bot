@@ -1,7 +1,9 @@
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine, select
-from models import Users, Password
+from sqlalchemy.orm import sessionmaker
+
 import models
+from models import Users, Password
+
 
 class Database:
     def __init__(self, db_url):
@@ -34,9 +36,9 @@ class Database:
         select_user = select(Users).where(Users.tg_id == data)
 
 
-#TEST
-# if __name__ == '__main__':
-    # db = Database('sqlite:///database.db')
+if __name__ == '__main__':
+    db = Database('sqlite:///database.db')
+    get_info = {'tg_id': 1242121}
 
-    # db.add_user(data=get_info, model=Users, filter_field="tg_id")
+    db.add_user(data=get_info, model=Users, filter_field="tg_id")
     # db.select_usr(get_info)
